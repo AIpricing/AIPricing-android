@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="8dp"
+    android:layout_marginBottom="8dp"
+    tools:context="ai.aipricing.demo.DemoMainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="'AIPricing Demo' has an in-app purchase product 'Demo SKU', It has 5 levels price."/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:layout_marginRight="8dp" android:text="Title"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:layout_marginRight="8dp" android:text="Product ID"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textStyle="bold" android:text="Price"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="Demo SKU"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="demo_sku1"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="right" android:text="$0.99"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="Demo SKU"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="demo_sku2"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="right" android:text="$1.49"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="Demo SKU"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="demo_sku3"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$1.99"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="Demo SKU"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="demo_sku4"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$2.49"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="Demo SKU"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8dp" android:text="demo_sku5"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="$2.99"/>
+            </TableRow>
+        </TableLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:text="Google Play Console"/>
+            <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="viewConsoleClick"
+            android:scaleType="fitXY"
+            android:src="@drawable/gp_console" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:onClick="purchasesClick"
+        android:text="In-App Purchases" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:onClick="advancedPurchasesClick"
+        android:text="Advanced Purchases" />
+
+    <ScrollView
+        android:id="@+id/textScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
+        <TextView
+            android:id="@+id/logView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+</LinearLayout>
