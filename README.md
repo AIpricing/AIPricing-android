@@ -14,25 +14,25 @@ Installation and Usage
 ---------
 1. Add this line to your app's `build.gradle` inside the `dependencies` section:
 ```java
-    implementation 'ai.aipricing:sdk:2.1'
+    implementation 'ai.aipricing:sdk:2.2'
 ```
-2. Construct AIPricing instance
+2. Get a purchase level and purchase
 ```java
-    final String AIPricing_APIKEY="3df3csgsedfdse3258dsed";
-    AIPricing ap=new AIPricing(this,AIPricing_APIKEY);
+	String SKU_HEAD="demo_sku";
+    AIPricing aiPricing =new AIPricing(this);
+    aiPricing.getLevel(SKU_HEAD, 3, new LevelCallback() {
+        public void onSuccess(final int level) {
+		    String productID=SKU_HEAD+level;
+		    //Use productID to launch Billing
+        }
+	});
 ```
-3. Get a purchase level and purchase
+3. If purchase sucessfuly, send payment notification
 ```java
-	final String SKU_HEAD="demo_sku";
-	int level=ap.getLevel(SKU_HEAD,3);
-	String productID=SKU_HEAD+level;
-    //Use productID to launch Billing 
+	AIPricing aiPricing=new AIPricing(this);
+    aiPricing.paymentNotification(purchase.getSku());
 ```
-4. If purchase sucessfuly, send payment notification
-```java
-	ap.paymentNotify();
-```
-5. Create an In-app entry in the Google Play Console.
+4. Create an In-app entry in the Google Play Console.
 
 Item is characterized by head + number, the number starting from 1, maximum 9, arranged from low to high prices.
 
