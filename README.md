@@ -18,18 +18,18 @@ Installation and Usage
 ```
 2. Get a purchase level and purchase
 ```java
-	String SKU_HEAD="demo_sku";
+    String SKU_HEAD="demo_sku";
     AIPricing aiPricing =new AIPricing(this);
     aiPricing.getLevel(SKU_HEAD, 3, new LevelCallback() {
         public void onSuccess(final int level) {
-		    String productID=SKU_HEAD+level;
-		    //Use productID to launch Billing
+            String productID=SKU_HEAD+level;
+            //Use productID to launch Billing
         }
 	});
 ```
 3. If purchase sucessfuly, send payment notification
 ```java
-	AIPricing aiPricing=new AIPricing(this);
+    AIPricing aiPricing=new AIPricing(this);
     aiPricing.paymentNotification(purchase.getSku());
 ```
 4. Create an In-app entry in the Google Play Console.
