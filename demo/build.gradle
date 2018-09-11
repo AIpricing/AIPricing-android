@@ -14,8 +14,8 @@ android {
         applicationId "ai.aipricing.demo"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 14
-        versionName "2.2"
+        versionCode 15
+        versionName "2.3"
     }
 
     buildTypes {
@@ -33,5 +33,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.billingclient:billing:1.1'
-    implementation project(':sdk')//Custom project replace with "implementation 'ai.aipricing:sdk:2.1'"
+    implementation project(':sdk')//Custom project replace with "implementation 'ai.aipricing:sdk:2.2'"
 }

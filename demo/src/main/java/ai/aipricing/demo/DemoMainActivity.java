@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -22,9 +21,7 @@ import ai.aipricing.LevelCallback;
 
 public class DemoMainActivity extends Activity implements PurchasesUpdatedListener {
 
-    final String DEMO_API_KEY="efg9P3DyLN3JVQqmWNdti4dz3N22RDhg8NeWgPPz";
-    final String SKU_HEAD="demo_sku";
-    AIPricing aiPricing;
+    String SKU_HEAD="demo_sku";
     BillingClient billingClient;
 
     @Override
@@ -62,7 +59,7 @@ public class DemoMainActivity extends Activity implements PurchasesUpdatedListen
         clearLog();
         log("-------- In-App Purchases Log --------");
         log("1. Initialize the AIPricing SDK");
-        aiPricing =new AIPricing(this,DEMO_API_KEY);
+        AIPricing aiPricing =new AIPricing(this);
         log("2. Get in-app purchase level");
         aiPricing.getLevel(SKU_HEAD, 3, new LevelCallback() {
             @Override
@@ -80,7 +77,6 @@ public class DemoMainActivity extends Activity implements PurchasesUpdatedListen
                         billingClient.launchBillingFlow(DemoMainActivity.this,flowParams);
                     }
                 });
-
             }
         });
     }
@@ -89,8 +85,7 @@ public class DemoMainActivity extends Activity implements PurchasesUpdatedListen
         clearLog();
         log("-------- Advanced Purchases Log --------");
         log("1. Initialize the AIPricing SDK");
-        aiPricing =new AIPricing(this,DEMO_API_KEY);
-        aiPricing.prepareGetLevel(SKU_HEAD,2,null);
+        AIPricing aiPricing =new AIPricing(this);
         log("2. Get in-app purchase level");
         aiPricing.clearCache(SKU_HEAD).
                 setConnectTimeout(5000).
@@ -123,8 +118,11 @@ public class DemoMainActivity extends Activity implements PurchasesUpdatedListen
     @Override
     public void onPurchasesUpdated(@BillingClient.BillingResponse int responseCode, @Nullable List<Purchase> purchases){
         if (responseCode == BillingClient.BillingResponse.OK && purchases != null) {
-            aiPricing.paymentNotification();
-            log("5. Purchase successful, send notification.");
+            for (Purchase purchase:purchases) {
+                AIPricing aiPricing=new AIPricing(this);
+                aiPricing.paymentNotification(purchase.getSku());
+                log("5. Purchase '"+purchase.getSku()+"' successful, send notification.");
+            }
         }
     }
 
@@ -137,6 +135,7 @@ public class DemoMainActivity extends Activity implements PurchasesUpdatedListen
         TextView logView=findViewById(R.id.logView);
         logView.setText("");
     }
+
     private void log(final Object obj){
         runOnUiThread(new Runnable() {
             @Override
