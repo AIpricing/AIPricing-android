@@ -25,7 +25,7 @@ Installation and Usage
             String productID=SKU_HEAD+level;
             //Use productID to launch Billing
         }
-	});
+    });
 ```
 3. If purchase sucessfuly, send payment notification
 ```java
