@@ -21,7 +21,7 @@ Installation and Usage
     String SKU_HEAD="demo_sku";
     AIPricing aiPricing =new AIPricing(this);
     aiPricing.getLevel(SKU_HEAD, 3, new LevelCallback() {
-        public void onSuccess(final int level) {
+        public void onSuccess(int level) {
             String productID=SKU_HEAD+level;
             //Use productID to launch Billing
         }
